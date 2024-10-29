@@ -8,7 +8,16 @@ async function loadFrames() {
     const frameCount = 9; // Adjust based on the total number of frames
     for (let i = 0; i < frameCount; i++) {
         const response = await fetch(`frames/${i}.txt`);
+        if (!response.ok) {
+            console.error(`Failed to load frame ${i}: ${response.statusText}`);
+            return; // Stop loading frames if there’s an error
+        }
         frames.push(await response.text());
+        console.log(`Loaded frame ${i}`); // Log loaded frames
+    }
+    startAnimation();
+}
+
     }
     startAnimation();
 }
