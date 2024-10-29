@@ -5,7 +5,7 @@ const asciiContainer = document.getElementById("ascii-container");
 
 // Load frames from the `frames` folder
 async function loadFrames() {
-    const frameCount = 12; // Adjust based on the total number of frames
+    const frameCount = 9; // Adjust based on the total number of frames
     for (let i = 0; i < frameCount; i++) {
         const response = await fetch(`frames/${i}.txt`);
         frames.push(await response.text());
