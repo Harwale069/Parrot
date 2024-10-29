@@ -18,10 +18,6 @@ async function loadFrames() {
     startAnimation();
 }
 
-    }
-    startAnimation();
-}
-
 // Start the ASCII animation loop
 function startAnimation() {
     animationInterval = setInterval(() => {
