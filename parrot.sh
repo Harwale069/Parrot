@@ -10,7 +10,7 @@ while true; do
         clear
         # Display the current frame
         curl -s "https://raw.githubusercontent.com/Harwale069/Parrot/main/frames/$i.txt"
-        # Wait a very short moment before showing the next frame (set to 0 for no pause)
-        sleep 0.05  # Adjust as needed
+        # 
+        sleep 0  # Adjust as needed
     done
 done
