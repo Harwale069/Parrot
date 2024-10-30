@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parrot ASCII Animation</title>
+    <title>Interactive ASCII Parrot</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="ascii-container">Loading animation...</div>
-    <button onclick="feedPet()">Feed Pet</button>
-    <button onclick="petPet()">Pet Pet</button>
+    <div class="terminal">
+        <pre id="ascii-container">Loading...</pre>
+    </div>
+    <div class="controls">
+        <button onclick="feedPet()">Feed</button>
+        <button onclick="petPet()">Pet</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
