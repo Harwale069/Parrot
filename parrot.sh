@@ -11,6 +11,6 @@ while true; do
         # Display the current frame
         curl -s "https://raw.githubusercontent.com/Harwale069/Parrot/main/frames/$i.txt"
         # 
-        sleep 0  # Adjust as needed
+        sleep 0.00000000001# Adjust as needed
     done
 done
