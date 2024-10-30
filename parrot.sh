@@ -9,6 +9,6 @@ while true; do
         # Fetch and display each frame from the GitHub URL
         curl -s "https://raw.githubusercontent.com/Harwale069/Parrot/main/frames/$i.txt"
         # Control frame rate (adjust if needed)
-        sleep 0.05
+        sleep 0.001
     done
 done
