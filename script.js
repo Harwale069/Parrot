@@ -1,36 +1,44 @@
-let health = 100;
-let happiness = 100;
-let hunger = 100;
+const frames = [];
+let currentFrame = 0;
+let animationInterval;
+const asciiContainer = document.getElementById("ascii-container");
 
+// Load frames from `frames` folder
+async function loadFrames() {
+    const frameCount = 10; // Update if you have more frames
+    for (let i = 0; i < frameCount; i++) {
+        try {
+            const response = await fetch(`frames/${i}.txt`);
+            if (!response.ok) throw new Error(`Failed to load frame ${i}`);
+            const frameData = await response.text();
+            frames.push(frameData);
+            console.log(`Loaded frame ${i}`);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    console.log(frames); // Log loaded frames
+    startAnimation();
+}
+
+// Start the ASCII animation loop
+function startAnimation() {
+    animationInterval = setInterval(() => {
+        asciiContainer.textContent = frames[currentFrame];
+        currentFrame = (currentFrame + 1) % frames.length;
+    }, 100); // Adjust speed as needed
+}
+
+// Interaction functions
 function feedPet() {
-    hunger = Math.min(hunger + 10, 100);
-    updateStats();
-    // Additional animation logic
+    alert("You fed your parrot!");
+    // Additional animations or effects can go here
 }
 
 function petPet() {
-    happiness = Math.min(happiness + 10, 100);
-    updateStats();
-    // Additional animation logic
+    alert("Your parrot is happy!");
+    // Additional animations or effects can go here
 }
 
-function updateStats() {
-    document.getElementById("health").textContent = health;
-    document.getElementById("happiness").textContent = happiness;
-    document.getElementById("hunger").textContent = hunger;
-    checkDeath();
-}
-
-function checkDeath() {
-    if (hunger <= 0 || health <= 0) {
-        alert("Your parrot has died! Game over.");
-        // Reset game logic
-    }
-}
-
-// Add a timer to decrease hunger and health over time
-setInterval(() => {
-    hunger = Math.max(hunger - 1, 0);
-    health = Math.max(health - 0.1, 0); // or any other logic
-    updateStats();
-}, 60000); // Every minute
+// Start loading frames when the page is ready
+window.onload = loadFrames;
