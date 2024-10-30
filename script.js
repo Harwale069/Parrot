@@ -7,13 +7,14 @@ const asciiContainer = document.getElementById("ascii-container");
 async function loadFrames() {
     const frameCount = 9; // Adjust based on the total number of frames
     for (let i = 0; i < frameCount; i++) {
-        const response = await fetch(`frames/${i}.txt`);
-        if (!response.ok) {
-            console.error(`Failed to load frame ${i}: ${response.statusText}`);
-            return; // Stop loading frames if there’s an error
+        try {
+            const response = await fetch(`frames/${i}.txt`);
+            if (!response.ok) throw new Error(`Failed to load frame ${i}`);
+            frames.push(await response.text());
+            console.log(`Loaded frame ${i}`);
+        } catch (error) {
+            console.error(error);
         }
-        frames.push(await response.text());
-        console.log(`Loaded frame ${i}`); // Log loaded frames
     }
     startAnimation();
 }
@@ -29,12 +30,10 @@ function startAnimation() {
 // Interaction functions
 function feedPet() {
     alert("You fed your pet!");
-    // Additional animations or effects can go here
 }
 
 function petPet() {
     alert("Your pet is happy!");
-    // Additional animations or effects can go here
 }
 
 // Start loading frames when the page is ready
