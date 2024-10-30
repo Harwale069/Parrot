@@ -11,6 +11,6 @@ while true; do
         # Display the current frame
         curl -s "https://raw.githubusercontent.com/Harwale069/Parrot/main/frames/$i.txt"
         # Wait a moment before showing the next frame
-        sleep 0.1  # Adjust the speed as needed
+        sleep 0.000001  # Adjust the speed as needed
     done
 done
