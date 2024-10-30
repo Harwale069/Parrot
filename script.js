@@ -1,36 +1,36 @@
-const frames = [];
-let currentFrame = 0;
-let animationInterval;
-const asciiContainer = document.getElementById("ascii-container");
+let health = 100;
+let happiness = 100;
+let hunger = 100;
 
-// Load frames from `frames` folder
-async function loadFrames() {
-    const frameCount = 10; // Update if you have more frames
-    for (let i = 0; i < frameCount; i++) {
-        const response = await fetch(`frames/${i}.txt`);
-        frames.push(await response.text());
-    }
-    startAnimation();
-}
-
-// Start the ASCII animation loop
-function startAnimation() {
-    animationInterval = setInterval(() => {
-        asciiContainer.textContent = frames[currentFrame];
-        currentFrame = (currentFrame + 1) % frames.length;
-    }, 100); // Adjust speed as needed
-}
-
-// Interaction functions
 function feedPet() {
-    alert("You fed your parrot!");
-    // Additional animations or effects can go here
+    hunger = Math.min(hunger + 10, 100);
+    updateStats();
+    // Additional animation logic
 }
 
 function petPet() {
-    alert("Your parrot is happy!");
-    // Additional animations or effects can go here
+    happiness = Math.min(happiness + 10, 100);
+    updateStats();
+    // Additional animation logic
 }
 
-// Start loading frames when the page is ready
-window.onload = loadFrames;
+function updateStats() {
+    document.getElementById("health").textContent = health;
+    document.getElementById("happiness").textContent = happiness;
+    document.getElementById("hunger").textContent = hunger;
+    checkDeath();
+}
+
+function checkDeath() {
+    if (hunger <= 0 || health <= 0) {
+        alert("Your parrot has died! Game over.");
+        // Reset game logic
+    }
+}
+
+// Add a timer to decrease hunger and health over time
+setInterval(() => {
+    hunger = Math.max(hunger - 1, 0);
+    health = Math.max(health - 0.1, 0); // or any other logic
+    updateStats();
+}, 60000); // Every minute
