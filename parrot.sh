@@ -6,11 +6,11 @@ frame_count=10
 # Loop forever
 while true; do
     for ((i=0; i<frame_count; i++)); do
-        # Clear the terminal
-        clear
+        # Move cursor to the top left of the terminal
+        tput cup 0 0
         # Display the current frame
         curl -s "https://raw.githubusercontent.com/Harwale069/Parrot/main/frames/$i.txt"
-        # 
-        sleep 0.00000000001# Adjust as needed
+        # No pause between frames
+        sleep 0  # Or use a very small value like 0.001
     done
 done
