@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Interactive Parrot Terminal Controller</title>
-    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parrot ASCII Animation</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Control Your Parrot Animation</h1>
-    <button onclick="sendCommand('start')">Start Animation</button>
-    <button onclick="sendCommand('stop')">Stop Animation</button>
-
-    <script>
-        const socket = io.connect('http://localhost:5000'); // Connect to the server
-
-        function sendCommand(command) {
-            socket.emit('command', command); // Send command to the server
-        }
-    </script>
+    <div id="ascii-container">Loading animation...</div>
+    <button onclick="feedPet()">Feed Pet</button>
+    <button onclick="petPet()">Pet Pet</button>
+    <script src="script.js"></script>
 </body>
 </html>
