@@ -3,18 +3,12 @@ let currentFrame = 0;
 let animationInterval;
 const asciiContainer = document.getElementById("ascii-container");
 
-// Load frames from the `frames` folder
+// Load frames from `frames` folder
 async function loadFrames() {
-    const frameCount = 9; // Adjust based on the total number of frames
+    const frameCount = 10; // Update if you have more frames
     for (let i = 0; i < frameCount; i++) {
-        try {
-            const response = await fetch(`frames/${i}.txt`);
-            if (!response.ok) throw new Error(`Failed to load frame ${i}`);
-            frames.push(await response.text());
-            console.log(`Loaded frame ${i}`);
-        } catch (error) {
-            console.error(error);
-        }
+        const response = await fetch(`frames/${i}.txt`);
+        frames.push(await response.text());
     }
     startAnimation();
 }
@@ -29,11 +23,13 @@ function startAnimation() {
 
 // Interaction functions
 function feedPet() {
-    alert("You fed your pet!");
+    alert("You fed your parrot!");
+    // Additional animations or effects can go here
 }
 
 function petPet() {
-    alert("Your pet is happy!");
+    alert("Your parrot is happy!");
+    // Additional animations or effects can go here
 }
 
 // Start loading frames when the page is ready
