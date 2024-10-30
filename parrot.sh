@@ -1,14 +1,16 @@
 #!/bin/bash
 
-frame_count=10  # Number of frames in your animation
+# Number of frames (adjust this based on how many frames you have)
+frame_count=10 
 
+# Loop forever
 while true; do
     for ((i=0; i<frame_count; i++)); do
-        # Clear the terminal to prevent leftover artifacts
+        # Clear the terminal
         clear
-        # Fetch and display each frame from the GitHub URL
+        # Display the current frame
         curl -s "https://raw.githubusercontent.com/Harwale069/Parrot/main/frames/$i.txt"
-        # Control frame rate (adjust if needed)
-        sleep 0.001
+        # Adjust sleep as needed
+        sleep 0.01  # or remove this line for no pause
     done
 done
