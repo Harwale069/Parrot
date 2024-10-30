@@ -11,6 +11,6 @@ while true; do
         # Display the current frame
         curl -s "https://raw.githubusercontent.com/Harwale069/Parrot/main/frames/$i.txt"
         # No pause between frames
-        sleep 0  # Or use a very small value like 0.001
+        sleep 0.001  # 
     done
 done
