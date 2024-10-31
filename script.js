@@ -11,12 +11,16 @@ let happiness = 100;
 let hungerBars = 40;
 let coins = 20; // Starting coins
 
-// Load frames and tutorial
 async function loadFrames() {
     const frameCount = 10;
     for (let i = 0; i < frameCount; i++) {
-        const response = await fetch(`frames/${i}.txt`);
-        frames.push(await response.text());
+        try {
+            const response = await fetch(`frames/${i}.txt`);
+            frames.push(await response.text());
+        } catch (error) {
+            console.error(`Error loading frame ${i}:`, error);
+        }
+
     }
     startAnimation();
     showTutorial();
